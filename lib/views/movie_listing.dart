@@ -21,6 +21,12 @@ class MovieListing extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('F1 (2025) (12A)'),
+            SizedBox(height: 12),
+            Text(
+              'Runtime: 155 mins | Starring Brad Pitt & Damson Idris. '
+              'Veteran Formula 1 driver Sonny Hayes returns to the grid '
+              'to mentor rookie prodigy Joshua Pearce for the APXGP team.',
+            ),
           ],
         ),
       ),
