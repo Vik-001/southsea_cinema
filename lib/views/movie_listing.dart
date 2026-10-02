@@ -40,26 +40,47 @@ class _MovieListingState extends State<MovieListing> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('F1 (2025) (12A)'),
+            const Text(
+              'F1 (2025) (12A)',
+              style: TextStyle(
+                color: cinemaFontWhite,
+                fontSize: 32,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Southsea Cinema Room',
+              style: TextStyle(color: cinemaFontWhite, fontSize: 16),
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'Thursday 22 Oct 2026, 18:00 - ends at 20:35',
+              style: TextStyle(color: cinemaFontWhite, fontSize: 16),
+            ),
             const SizedBox(height: 12),
             const Text(
               'Runtime: 155 mins | Starring Brad Pitt & Damson Idris. '
               'Veteran Formula 1 driver Sonny Hayes returns to the grid '
               'to mentor rookie prodigy Joshua Pearce for the APXGP team.',
+              style: TextStyle(color: cinemaFontMuted, fontSize: 15),
             ),
-            const SizedBox(height: 24),
-            const Text('Southsea Cinema Room'),
-            const SizedBox(height: 12),
-            const Text('Thursday 22 Oct 2026, 18:00 - ends at 20:35'),
             const SizedBox(height: 24),
             const Text(
               'Please note that Discounts / Membership Benefits will be applied '
               'once you have selected your tickets',
+              style: TextStyle(color: cinemaFontWhite, fontSize: 16),
             ),
             const SizedBox(height: 16),
-            const Text('Select Quantities (Up to 5 in total)'),
+            const Text(
+              'Select Quantities (Up to 5 in total)',
+              style: TextStyle(color: cinemaFontWhite, fontSize: 16),
+            ),
             const SizedBox(height: 24),
-            const Text('Tickets'),
+            const Text(
+              'Tickets',
+              style: cinemaHeaderStyle,
+            ),
             const SizedBox(height: 12),
             Row(
               children: [
