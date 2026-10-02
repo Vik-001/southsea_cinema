@@ -38,6 +38,16 @@ class MovieListing extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text('Select Quantities (Up to 5 in total)'),
+            SizedBox(height: 24),
+            Text('Tickets'),
+            SizedBox(height: 12),
+            Row(
+              children: [
+                Text('0'),
+                SizedBox(width: 16),
+                Text('Adult (£7.50)'),
+              ],
+            ),
           ],
         ),
       ),
