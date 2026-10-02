@@ -83,6 +83,13 @@ class _MovieListingState extends State<MovieListing> {
                 ),
                 const SizedBox(width: 16),
                 const Text('Adult (£7.50)'),
+                const SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: _addToOrder,
+                  child: const Text('ADD TO ORDER'),
+                ),
+                const SizedBox(height: 16),
+                Text(_bookingMessage),
               ],
             ),
           ],
