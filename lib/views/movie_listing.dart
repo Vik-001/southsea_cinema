@@ -12,6 +12,19 @@ class MovieListing extends StatefulWidget {
 class _MovieListingState extends State<MovieListing> {
   int _ticketQuantity = 0;
 
+  String _bookingMessage = '';
+
+  void _addToOrder() {
+    setState(() {
+      if (_ticketQuantity == 0) {
+        _bookingMessage = 'Please select at least 1 ticket.';
+      } else {
+        _bookingMessage =
+            'Added $_ticketQuantity ticket(s) for F1 (2025) to your order!';
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
