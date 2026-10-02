@@ -85,7 +85,15 @@ class _MovieListingState extends State<MovieListing> {
             Row(
               children: [
                 DropdownMenu<int>(
+                  width: 120,
                   initialSelection: _ticketQuantity,
+                  textStyle: const TextStyle(color: Colors.black, fontSize: 16),
+                  inputDecorationTheme: const InputDecorationTheme(
+                    filled: true,
+                    fillColor: cinemaFontWhite,
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  ),
                   onSelected: (int? value) {
                     if (value != null) {
                       setState(() {
@@ -103,15 +111,34 @@ class _MovieListingState extends State<MovieListing> {
                   ],
                 ),
                 const SizedBox(width: 16),
-                const Text('Adult (£7.50)'),
-                const SizedBox(height: 24),
-                ElevatedButton(
-                  onPressed: _addToOrder,
-                  child: const Text('ADD TO ORDER'),
+                const Text(
+                  'Adult (£7.50)',
+                  style: TextStyle(color: cinemaFontWhite, fontSize: 16),
                 ),
-                const SizedBox(height: 16),
-                Text(_bookingMessage),
               ],
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: cinemaBrand,
+                foregroundColor: cinemaFontWhite,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
+              ),
+              onPressed: _addToOrder,
+              child: const Text('ADD TO ORDER'),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              _bookingMessage,
+              style: const TextStyle(
+                color: cinemaBrandLight,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
