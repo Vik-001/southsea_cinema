@@ -25,7 +25,6 @@ class _MovieListingState extends State<MovieListing> {
     });
   }
 
-  // 1. Helper method holding the movie text details (from Step 5A)
   Widget _buildMovieInfo() {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,7 +69,6 @@ class _MovieListingState extends State<MovieListing> {
     );
   }
 
-  // 2. Helper method holding the ticket dropdown & button (from Step 5B)
   Widget _buildTicketSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +139,6 @@ class _MovieListingState extends State<MovieListing> {
     );
   }
 
-  // 3. Scaffold body now uses LayoutBuilder to switch between Row and Column
   @override
   Widget build(BuildContext context) {
     return Scaffold(
