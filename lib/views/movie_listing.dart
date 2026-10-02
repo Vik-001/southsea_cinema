@@ -24,35 +24,52 @@ class _MovieListingState extends State<MovieListing> {
       drawer: const NavDrawer(),
       body: Container(
         padding: const EdgeInsets.all(24.0),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('F1 (2025) (12A)'),
-            SizedBox(height: 12),
-            Text(
+            const Text('F1 (2025) (12A)'),
+            const SizedBox(height: 12),
+            const Text(
               'Runtime: 155 mins | Starring Brad Pitt & Damson Idris. '
               'Veteran Formula 1 driver Sonny Hayes returns to the grid '
               'to mentor rookie prodigy Joshua Pearce for the APXGP team.',
             ),
-            SizedBox(height: 24),
-            Text('Southsea Cinema Room'),
-            SizedBox(height: 12),
-            Text('Thursday 22 Oct 2026, 18:00 - ends at 20:35'),
-            SizedBox(height: 24),
-            Text(
+            const SizedBox(height: 24),
+            const Text('Southsea Cinema Room'),
+            const SizedBox(height: 12),
+            const Text('Thursday 22 Oct 2026, 18:00 - ends at 20:35'),
+            const SizedBox(height: 24),
+            const Text(
               'Please note that Discounts / Membership Benefits will be applied '
               'once you have selected your tickets',
             ),
-            SizedBox(height: 16),
-            Text('Select Quantities (Up to 5 in total)'),
-            SizedBox(height: 24),
-            Text('Tickets'),
-            SizedBox(height: 12),
+            const SizedBox(height: 16),
+            const Text('Select Quantities (Up to 5 in total)'),
+            const SizedBox(height: 24),
+            const Text('Tickets'),
+            const SizedBox(height: 12),
             Row(
               children: [
-                Text('0'),
-                SizedBox(width: 16),
-                Text('Adult (£7.50)'),
+                DropdownMenu<int>(
+                  initialSelection: _ticketQuantity,
+                  onSelected: (int? value) {
+                    if (value != null) {
+                      setState(() {
+                        _ticketQuantity = value;
+                      });
+                    }
+                  },
+                  dropdownMenuEntries: const [
+                    DropdownMenuEntry(value: 0, label: '0'),
+                    DropdownMenuEntry(value: 1, label: '1'),
+                    DropdownMenuEntry(value: 2, label: '2'),
+                    DropdownMenuEntry(value: 3, label: '3'),
+                    DropdownMenuEntry(value: 4, label: '4'),
+                    DropdownMenuEntry(value: 5, label: '5'),
+                  ],
+                ),
+                const SizedBox(width: 16),
+                const Text('Adult (£7.50)'),
               ],
             ),
           ],
