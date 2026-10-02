@@ -27,6 +27,17 @@ class MovieListing extends StatelessWidget {
               'Veteran Formula 1 driver Sonny Hayes returns to the grid '
               'to mentor rookie prodigy Joshua Pearce for the APXGP team.',
             ),
+            SizedBox(height: 24),
+            Text('Southsea Cinema Room'),
+            SizedBox(height: 12),
+            Text('Thursday 22 Oct 2026, 18:00 - ends at 20:35'),
+            SizedBox(height: 24),
+            Text(
+              'Please note that Discounts / Membership Benefits will be applied '
+              'once you have selected your tickets',
+            ),
+            SizedBox(height: 16),
+            Text('Select Quantities (Up to 5 in total)'),
           ],
         ),
       ),
