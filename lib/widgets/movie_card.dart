@@ -12,7 +12,7 @@ class MovieCard extends StatelessWidget {
     
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      color: const Color(0xFF1A1A24),
+      color: cinemaSurface,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
@@ -33,24 +33,24 @@ class MovieCard extends StatelessWidget {
                 children: [
                   Text(
                     '${movie.title} (${movie.ageRating})',
-                    style: const TextStyle(
-                      fontSize: 18, 
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent, 
-                    ),
+                    style: cinemaHeaderStyle.copyWith(color: cinemaBrand),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     movie.synopsis,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: cinemaFontWhite),
                   ),
                   const SizedBox(height: 16),
                   Text(
                     movie.screeningTime,
-                    style: const TextStyle(color: Colors.white70),
+                    style: const TextStyle(color: cinemaFontMuted),
                   ),
                   const SizedBox(height: 8),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: cinemaBrandLight,
+                      foregroundColor: cinemaFontWhite,
+                    ),
                     onPressed: () {
                       
                     },
