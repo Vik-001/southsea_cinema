@@ -53,7 +53,12 @@ class MovieCard extends StatelessWidget {
                       foregroundColor: cinemaFontWhite,
                     ),
                     onPressed: () {
-                      
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MovieListing(movie: movie),
+                        ),
+                      );
                     },
                     child: const Text('BOOK NOW'),
                   ),
