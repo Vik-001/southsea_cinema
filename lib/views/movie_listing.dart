@@ -29,12 +29,12 @@ class _MovieListingState extends State<MovieListing> {
   }
 
   Widget _buildMovieInfo() {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'F1 (2025) (12A)',
-          style: TextStyle(
+          '${widget.movie.title} (${widget.movie.ageRating})',
+          style: const TextStyle(
             color: cinemaFontWhite,
             fontSize: 32,
             fontWeight: FontWeight.w500,
