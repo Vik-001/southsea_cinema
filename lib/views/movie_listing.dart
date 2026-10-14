@@ -3,16 +3,10 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 
-class MovieListing extends StatelessWidget {
+class MovieListing extends StatefulWidget {
   final Movie movie;
 
   const MovieListing({super.key, required this.movie});
-
-  
-}
-
-class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
 
   @override
   State<MovieListing> createState() => _MovieListingState();
