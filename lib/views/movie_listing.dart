@@ -23,7 +23,7 @@ class _MovieListingState extends State<MovieListing> {
         _bookingMessage = 'Please select at least 1 ticket.';
       } else {
         _bookingMessage =
-            'Added $_ticketQuantity ticket(s) for F1 (2025) to your order!';
+            'Added $_ticketQuantity ticket(s) for ${widget.movie.title} to your order!';
       }
     });
   }
