@@ -41,13 +41,14 @@ class _MovieListingState extends State<MovieListing> {
           ),
         ),
         SizedBox(height: 24),
+        Image.asset(widget.movie.imagePath, width: 200,),
         Text(
           'Southsea Cinema Room',
           style: TextStyle(color: cinemaFontWhite, fontSize: 16),
         ),
         SizedBox(height: 12),
         Text(
-          'Thursday 22 Oct 2026, 18:00 - ends at 20:35',
+          widget.movie.screeningTime,
           style: TextStyle(color: cinemaFontWhite, fontSize: 16),
         ),
         SizedBox(height: 12),
