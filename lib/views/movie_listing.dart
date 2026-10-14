@@ -53,9 +53,7 @@ class _MovieListingState extends State<MovieListing> {
         ),
         SizedBox(height: 12),
         Text(
-          'Runtime: 155 mins | Starring Brad Pitt & Damson Idris. '
-          'Veteran Formula 1 driver Sonny Hayes returns to the grid '
-          'to mentor rookie prodigy Joshua Pearce for the APXGP team.',
+          widget.movie.synopsis,
           style: TextStyle(color: cinemaFontMuted, fontSize: 15),
         ),
         SizedBox(height: 24),
