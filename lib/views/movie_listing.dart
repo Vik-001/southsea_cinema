@@ -41,7 +41,10 @@ class _MovieListingState extends State<MovieListing> {
           ),
         ),
         SizedBox(height: 24),
-        Image.asset(widget.movie.imagePath, width: 200,),
+        Image.asset(
+          widget.movie.imagePath,
+          width: 200,
+        ),
         Text(
           'Southsea Cinema Room',
           style: TextStyle(color: cinemaFontWhite, fontSize: 16),
