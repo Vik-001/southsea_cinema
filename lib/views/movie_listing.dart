@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/movie.dart';
+
+class MovieListing extends StatelessWidget {
+  final Movie movie;
+
+  const MovieListing({super.key, required this.movie});
+
+  
+}
 
 class MovieListing extends StatefulWidget {
   const MovieListing({super.key});
