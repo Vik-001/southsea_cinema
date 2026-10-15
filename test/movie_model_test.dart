@@ -3,7 +3,6 @@ import 'package:southsea_cinema/models/movie.dart';
 
 void main() {
   group('Movie Model Tests', () {
-    
     test('Constructor assigns properties correctly', () {
       const movie = Movie(
         id: 'test_1',
@@ -25,11 +24,11 @@ void main() {
       const movieWithPence = Movie(
         id: 'test_2',
         title: 'Penny Film',
-        ageRating: 'X', 
+        ageRating: 'X',
         synopsis: '...',
         screeningTime: '...',
-        imagePath: '...', 
-        price: 7.50, 
+        imagePath: '...',
+        price: 7.50,
       );
 
       expect(movieWithPence.formattedPrice, '£7.50');
@@ -37,15 +36,14 @@ void main() {
       const movieWholePound = Movie(
         id: 'test_3',
         title: 'jellof united',
-        ageRating: 'X', 
+        ageRating: 'X',
         synopsis: '...',
         screeningTime: '...',
-        imagePath: '...', 
-        price: 8.0, 
+        imagePath: '...',
+        price: 8.0,
       );
 
-      expect(movieWholePound.formattedPrice, '£8.00'); 
+      expect(movieWholePound.formattedPrice, '£8.00');
     });
-    
   });
 }

@@ -10,7 +10,6 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       color: cinemaSurface,
@@ -19,7 +18,6 @@ class MovieCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
             Image.asset(
               movie.imagePath,
               width: 100,
@@ -27,7 +25,6 @@ class MovieCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             const SizedBox(width: 16),
-            
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
