@@ -13,7 +13,7 @@ class MovieListing extends StatefulWidget {
 }
 
 class _MovieListingState extends State<MovieListing> {
-  int _ticketQuantity = 0;
+  int _ticketQuantity = 1;
 
   String _bookingMessage = '';
 
@@ -154,10 +154,11 @@ class _MovieListingState extends State<MovieListing> {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
+      body: SingleChildScrollView(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
           if (constraints.maxWidth > 600) {
-            // Wide screen: side-by-side Row
+            // Wide screen
             return Container(
               padding: const EdgeInsets.all(24.0),
               child: Row(
@@ -170,7 +171,7 @@ class _MovieListingState extends State<MovieListing> {
               ),
             );
           } else {
-            // Narrow (phone-sized) screen: stacked Column
+            // Narrow screen
             return Container(
               padding: const EdgeInsets.all(24.0),
               child: Column(
@@ -183,7 +184,8 @@ class _MovieListingState extends State<MovieListing> {
               ),
             );
           }
-        },
+          },
+        ),
       ),
     );
   }
