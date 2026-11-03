@@ -16,8 +16,6 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appTitle),
-        backgroundColor: cinemaSurface,
-        foregroundColor: cinemaFontWhite,
       ),
       drawer: const NavDrawer(),
       body: ListView.builder(
