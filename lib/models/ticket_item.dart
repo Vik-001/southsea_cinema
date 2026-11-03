@@ -10,6 +10,6 @@ class TicketItem {
   });
 
   double get lineTotal {
-    return 6.0 * quantity; 
+    return movie.price * quantity; 
   }
 }
