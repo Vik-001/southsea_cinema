@@ -25,7 +25,7 @@ class _MovieListingState extends State<MovieListing> {
 
       final newTicket = TicketItem(
         movie: widget.movie, 
-        quantity: 1,
+        quantity: _ticketQuantity,
       );
       BasketRepository.instance.addItem(newTicket);
       _bookingMessage = 'Successfully added to your basket!';

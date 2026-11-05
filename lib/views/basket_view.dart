@@ -96,6 +96,14 @@ class _BasketViewState extends State<BasketView> {
           PrimaryButton(
             label: 'CHECKOUT',
             onPressed: () {
+              BasketRepository.instance.clear();
+              setState(() {});
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Checkout successful! Tickets confirmed.'),
+                  duration: Duration(seconds: 3),
+                ),
+              );
             },
           ),
         ],
