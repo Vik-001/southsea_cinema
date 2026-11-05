@@ -18,7 +18,6 @@ class Movie {
   });
 
 
-  // Converts a JSON map into a Movie object
   factory Movie.fromJson(Map<String, dynamic> json) {
     final String id = json['id'] as String;
     final String title = json['title'] as String;

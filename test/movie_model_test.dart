@@ -14,13 +14,12 @@ void main() {
         price: 5.50,
       );
 
-      expect(movie.title, 'Test Film');
+      expect(movie.title, 'Jonny Test');
       expect(movie.price, 5.50);
       expect(movie.id, 'test_1');
     });
 
     test('formattedPrice formats with £ and two decimal places', () {
-      // Check a price with pence
       const movieWithPence = Movie(
         id: 'test_2',
         title: 'Penny Film',
@@ -32,7 +31,49 @@ void main() {
       );
 
       expect(movieWithPence.formattedPrice, '£7.50');
+    });
 
+    test('JSON conversion preserves every movie field', () {
+      final Map<String, dynamic> data = <String, dynamic>{
+        'id': 'film_dune',
+        'title': 'Dune: Part Two',
+        'ageRating': '12A',
+        'synopsis': 'Paul Atreides unites with Chani and the Fremen.',
+        'screeningTime': '19:00',
+        'imagePath': 'assets/images/dune.jpg',
+        'price': 8.50,
+      };
+
+      final Movie movie = Movie.fromJson(data);
+
+      expect(movie.id, 'film_dune');
+      expect(movie.title, 'Dune: Part Two');
+      expect(movie.ageRating, '12A');
+      expect(movie.synopsis, 'Paul Atreides unites with Chani and the Fremen.');
+      expect(movie.screeningTime, '19:00');
+      expect(movie.imagePath, 'assets/images/dune.jpg');
+      expect(movie.price, 8.50);
+
+      expect(movie.toJson(), data);
+    });
+
+    test('fromJson accepts a whole-number price', () {
+      final Map<String, dynamic> data = <String, dynamic>{
+        'id': 'film_test',
+        'title': 'Test Movie',
+        'ageRating': 'U',
+        'synopsis': 'A test movie.',
+        'screeningTime': '12:00',
+        'imagePath': 'assets/images/test.jpg',
+        'price': 8,
+      };
+
+      final Movie movie = Movie.fromJson(data);
+      expect(movie.price, 8.0);
+      expect(movie.price, isA<double>());
+    });
+
+    test('formattedPrice handles whole pounds without decimals', () {
       const movieWholePound = Movie(
         id: 'test_3',
         title: 'jellof united',
