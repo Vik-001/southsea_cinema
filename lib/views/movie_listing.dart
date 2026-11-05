@@ -3,6 +3,8 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:southsea_cinema/models/ticket_item.dart';
+import 'package:southsea_cinema/repositories/basket_repository.dart';
 
 class MovieListing extends StatefulWidget {
   final Movie movie;
@@ -20,12 +22,13 @@ class _MovieListingState extends State<MovieListing> {
 
   void _addToOrder() {
     setState(() {
-      if (_ticketQuantity == 0) {
-        _bookingMessage = 'Please select at least 1 ticket.';
-      } else {
-        _bookingMessage =
-            'Added $_ticketQuantity ticket(s) for ${widget.movie.title} to your order!';
-      }
+
+      final newTicket = TicketItem(
+        movie: widget.movie, 
+        quantity: 1,
+      );
+      BasketRepository.instance.addItem(newTicket);
+      _bookingMessage = 'Successfully added to your basket!';
     });
   }
 
