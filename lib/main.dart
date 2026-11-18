@@ -19,7 +19,7 @@ bool isSupportedPlatform() {
 void main() {
   if (isSupportedPlatform()) {
     runApp(
-        const SouthseaCinemaApp()); // Replace with your existing root app widget if named differently
+        const SouthseaCinemaApp());
   } else {
     runApp(const UnsupportedPlatformApp());
   }
