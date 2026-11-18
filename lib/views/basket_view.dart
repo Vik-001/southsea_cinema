@@ -249,6 +249,17 @@ class _BasketViewState extends State<BasketView> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _buildBasketSection(items),
+            if (_confirmationMessage.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 12.0),
+                child: Text(
+                  _confirmationMessage,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: cinemaBrand,
+                  ),
+                ),
+              ),
             const Divider(height: 32, color: Colors.white24),
             const Text(
               'PAST BOOKINGS',
