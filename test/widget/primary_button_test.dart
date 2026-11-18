@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 
 void main() {
-  testWidgets('PrimaryButton renders its label and taps correctly', (WidgetTester tester) async {
+  testWidgets('PrimaryButton renders its label and taps correctly',
+      (WidgetTester tester) async {
     bool wasPressed = false;
 
     await tester.pumpWidget(

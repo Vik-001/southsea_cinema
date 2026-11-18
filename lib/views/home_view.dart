@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
       });
     } catch (error) {
       if (!mounted) return;
-      
+
       setState(() {
         _errorMessage = 'Could not load the menu: $error';
         _loading = false;
@@ -42,26 +42,30 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     final Widget bodyContent;
-    
+
     if (_loading) {
-      bodyContent = const Center(child: CircularProgressIndicator(color: Colors.white));
+      bodyContent =
+          const Center(child: CircularProgressIndicator(color: Colors.white));
     } else if (_errorMessage.isNotEmpty) {
-      bodyContent = Center(child: Text(_errorMessage, style: const TextStyle(color: Colors.redAccent)));
+      bodyContent = Center(
+          child: Text(_errorMessage,
+              style: const TextStyle(color: Colors.redAccent)));
     } else {
       bodyContent = ListView.builder(
         itemCount: _movies.length,
         itemBuilder: (context, index) {
-          return MovieCard(movie: _movies[index]); 
+          return MovieCard(movie: _movies[index]);
         },
       );
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('SOUTHSEA CINEMA')),
+      appBar: AppBar(
+        title: const Text('SOUTHSEA CINEMA'),
+      ),
       drawer: const NavDrawer(),
       body: bodyContent,
     );

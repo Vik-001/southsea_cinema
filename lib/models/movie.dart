@@ -17,7 +17,6 @@ class Movie {
     required this.price,
   });
 
-
   factory Movie.fromJson(Map<String, dynamic> json) {
     final String id = json['id'] as String;
     final String title = json['title'] as String;

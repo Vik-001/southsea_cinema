@@ -9,12 +9,13 @@ class MovieRepository {
       return cachedMovies;
     }
 
-   return [
+    return [
       const Movie(
         id: 'silo',
         title: 'SILO',
         ageRating: '15',
-        synopsis: 'In a ruined and toxic future, a community exists in a giant underground silo.',
+        synopsis:
+            'In a ruined and toxic future, a community exists in a giant underground silo.',
         screeningTime: 'Friday 16 Oct 2026 19:00',
         imagePath: 'assets/images/silo.jpg',
         price: 7.50,
@@ -23,7 +24,8 @@ class MovieRepository {
         id: 'severance',
         title: 'SEVERANCE',
         ageRating: '15',
-        synopsis: 'Mark leads a team of office workers whose memories have been surgically divided.',
+        synopsis:
+            'Mark leads a team of office workers whose memories have been surgically divided.',
         screeningTime: 'Saturday 17 Oct 2026 20:00',
         imagePath: 'assets/images/severance.jpg',
         price: 8.00,
@@ -48,10 +50,10 @@ class MovieRepository {
     String assetPath = 'assets/data/movies.json',
   }) async {
     final String jsonString = await rootBundle.loadString(assetPath);
-    
+
     final dynamic decodedData = jsonDecode(jsonString);
     final List<dynamic> jsonList = decodedData as List<dynamic>;
-    
+
     final List<Movie> loadedMovies = [];
     for (final dynamic item in jsonList) {
       final Map<String, dynamic> itemMap = item as Map<String, dynamic>;

@@ -22,9 +22,8 @@ class _MovieListingState extends State<MovieListing> {
 
   void _addToOrder() {
     setState(() {
-
       final newTicket = TicketItem(
-        movie: widget.movie, 
+        movie: widget.movie,
         quantity: _ticketQuantity,
       );
       BasketRepository.instance.addItem(newTicket);
@@ -150,33 +149,33 @@ class _MovieListingState extends State<MovieListing> {
       body: SingleChildScrollView(
         child: LayoutBuilder(
           builder: (context, constraints) {
-          if (constraints.maxWidth > 600) {
-            // Wide screen
-            return Container(
-              padding: const EdgeInsets.all(24.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(child: _buildMovieInfo()),
-                  const SizedBox(width: 32),
-                  Expanded(child: _buildTicketSection()),
-                ],
-              ),
-            );
-          } else {
-            // Narrow screen
-            return Container(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildMovieInfo(),
-                  const SizedBox(height: 24),
-                  _buildTicketSection(),
-                ],
-              ),
-            );
-          }
+            if (constraints.maxWidth > 600) {
+              // Wide screen
+              return Container(
+                padding: const EdgeInsets.all(24.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: _buildMovieInfo()),
+                    const SizedBox(width: 32),
+                    Expanded(child: _buildTicketSection()),
+                  ],
+                ),
+              );
+            } else {
+              // Narrow screen
+              return Container(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildMovieInfo(),
+                    const SizedBox(height: 24),
+                    _buildTicketSection(),
+                  ],
+                ),
+              );
+            }
           },
         ),
       ),

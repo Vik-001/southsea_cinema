@@ -10,7 +10,8 @@ void main() {
   });
 
   group('HomeView UI Tests', () {
-    testWidgets('displays movies loaded from JSON asset', (WidgetTester tester) async {
+    testWidgets('displays movies loaded from JSON asset',
+        (WidgetTester tester) async {
       await tester.pumpWidget(const MaterialApp(home: HomeView()));
       await tester.pumpAndSettle();
 

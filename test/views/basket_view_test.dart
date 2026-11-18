@@ -12,7 +12,8 @@ const Movie testMovie = Movie(
   id: 'film_slow_horses',
   title: 'Slow Horses: Special Screening',
   ageRating: '15',
-  synopsis: 'A dysfunctional team of British MI5 agents navigate the espionage world.',
+  synopsis:
+      'A dysfunctional team of British MI5 agents navigate the espionage world.',
   screeningTime: '20:00',
   imagePath: 'assets/images/slow_horses.jpg',
   price: 6.0,
@@ -78,7 +79,8 @@ void main() {
   });
 
   group('BasketView SQLite Persistence Tests', () {
-    testWidgets('checkout saves the booking, clears the basket, and displays it',
+    testWidgets(
+        'checkout saves the booking, clears the basket, and displays it',
         (WidgetTester tester) async {
       BasketRepository.instance.addItem(
         const TicketItem(movie: testMovie, quantity: 2),
@@ -133,7 +135,8 @@ void main() {
 
       expect(BasketRepository.instance.getItems().length, 1);
       expect(find.text('Slow Horses: Special Screening'), findsOneWidget);
-      expect(find.textContaining('Could not save your booking'), findsOneWidget);
+      expect(
+          find.textContaining('Could not save your booking'), findsOneWidget);
     });
 
     testWidgets('past bookings appear with the newest booking first',
