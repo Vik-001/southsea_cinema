@@ -21,6 +21,8 @@ class _BasketViewState extends State<BasketView> {
   bool _loadingBookings = true;
   String _bookingsError = '';
 
+  String _confirmationMessage = '';
+
   @override
   void initState() {
     super.initState();
@@ -53,6 +55,55 @@ class _BasketViewState extends State<BasketView> {
     setState(() {
       basket.removeItem(index);
     });
+  }
+
+  String _buildSummary(List<TicketItem> items) {
+    final List<String> parts = [];
+    for (final TicketItem item in items) {
+      parts.add('${item.quantity} x ${item.movie.title}');
+    }
+    return parts.join(', ');
+  }
+
+  String _formatDate(DateTime now) {
+    final String day = now.day.toString().padLeft(2, '0');
+    final String month = now.month.toString().padLeft(2, '0');
+    final String hour = now.hour.toString().padLeft(2, '0');
+    final String minute = now.minute.toString().padLeft(2, '0');
+    return '$day/$month/${now.year} $hour:$minute';
+  }
+
+  Future<void> _checkout(List<TicketItem> items) async {
+    final String summary = _buildSummary(items);
+    final double total = basket.getTotalDue();
+    final String date = _formatDate(DateTime.now());
+
+    try {
+      final CinemaDatabase database = CinemaDatabase.instance;
+      final int bookingNumber = await database.getNextBookingNumber();
+      final Booking booking = Booking(
+        bookingNumber: bookingNumber,
+        summary: summary,
+        total: total,
+        date: date,
+      );
+      await database.insertBooking(booking);
+      basket.clear();
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _confirmationMessage = 'Booking #$bookingNumber saved';
+      });
+      await _loadBookings();
+    } catch (error) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _confirmationMessage = 'Could not save your booking: $error';
+      });
+    }
   }
 
   Widget _buildBasketSection(List<TicketItem> items) {
@@ -97,7 +148,7 @@ class _BasketViewState extends State<BasketView> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         ...rows,
-        _buildTotals(),
+        _buildTotals(items),
       ],
     );
   }
@@ -215,7 +266,7 @@ class _BasketViewState extends State<BasketView> {
     );
   }
 
-  Widget _buildTotals() {
+  Widget _buildTotals(List<TicketItem> items) {
     return Container(
       padding: const EdgeInsets.all(16.0),
       color: cinemaSurface,
@@ -272,14 +323,7 @@ class _BasketViewState extends State<BasketView> {
           PrimaryButton(
             label: 'CHECKOUT',
             onPressed: () {
-              BasketRepository.instance.clear();
-              setState(() {});
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Checkout successful! Tickets confirmed.'),
-                  duration: Duration(seconds: 3),
-                ),
-              );
+              _checkout(items);
             },
           ),
         ],
