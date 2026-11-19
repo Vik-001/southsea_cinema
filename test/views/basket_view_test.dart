@@ -19,6 +19,25 @@ const Movie testMovie = Movie(
   price: 6.0,
 );
 
+const Movie testMovie2 = Movie(
+  id: 'film_silo',
+  title: 'Silo: Director Cut',
+  ageRating: '15',
+  synopsis: 'Survivors live in a giant underground silo.',
+  screeningTime: '18:00',
+  imagePath: 'assets/images/silo.jpg',
+  price: 8.0,
+);
+
+const Movie testMovie3 = Movie(
+  id: 'film_severance',
+  title: 'Severance: Finale Event',
+  ageRating: '15',
+  synopsis: 'Office workers surgically divide work and personal memories.',
+  screeningTime: '21:00',
+  imagePath: 'assets/images/severance.jpg',
+  price: 7.5,
+);
 void main() {
   late Database testDatabase;
 
@@ -77,6 +96,35 @@ void main() {
       expect(find.text('YOUR BASKET IS EMPTY!'), findsOneWidget);
     });
   });
+
+  testWidgets('deletes the middle of three films using its Key',
+        (WidgetTester tester) async {
+      BasketRepository.instance.addItem(
+        const TicketItem(movie: testMovie, quantity: 1),
+      );
+      BasketRepository.instance.addItem(
+        const TicketItem(movie: testMovie2, quantity: 1),
+      );
+      BasketRepository.instance.addItem(
+        const TicketItem(movie: testMovie3, quantity: 1),
+      );
+
+      await pumpBasketView(tester);
+
+      expect(find.text(testMovie.title), findsOneWidget);
+      expect(find.text(testMovie2.title), findsOneWidget);
+      expect(find.text(testMovie3.title), findsOneWidget);
+
+      final Finder middleDeleteButton =
+          find.byKey(const Key('delete_film_silo'));
+      await tester.ensureVisible(middleDeleteButton);
+      await tester.tap(middleDeleteButton);
+      await tester.pumpAndSettle();
+
+      expect(find.text(testMovie2.title), findsNothing);
+      expect(find.text(testMovie.title), findsOneWidget);
+      expect(find.text(testMovie3.title), findsOneWidget);
+    });
 
   group('BasketView SQLite Persistence Tests', () {
     testWidgets(
