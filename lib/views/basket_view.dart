@@ -137,6 +137,7 @@ class _BasketViewState extends State<BasketView> {
             style: const TextStyle(color: Colors.white70),
           ),
           trailing: IconButton(
+            key: Key('delete_${item.movie.id}'),
             icon: const Icon(Icons.delete, color: Colors.redAccent),
             onPressed: () => _removeItem(index),
           ),
