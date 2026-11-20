@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_repository.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

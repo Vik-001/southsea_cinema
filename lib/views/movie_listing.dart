@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
-import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:southsea_cinema/models/ticket_item.dart';
 import 'package:southsea_cinema/repositories/basket_repository.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 
 class MovieListing extends StatefulWidget {
   final Movie movie;
@@ -32,58 +32,74 @@ class _MovieListingState extends State<MovieListing> {
   }
 
   Widget _buildMovieInfo() {
+    final ThemeData theme = Theme.of(context);
+    final Color textColor = theme.colorScheme.onSurface;
+    final Color mutedColor = theme.brightness == Brightness.dark
+        ? cinemaFontMuted
+        : cinemaLightMuted;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           '${widget.movie.title} (${widget.movie.ageRating})',
-          style: const TextStyle(
-            color: cinemaFontWhite,
+          style: TextStyle(
+            color: textColor,
             fontSize: 32,
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
         Image.asset(
           widget.movie.imagePath,
           width: 200,
         ),
         Text(
           'Southsea Cinema Room',
-          style: TextStyle(color: cinemaFontWhite, fontSize: 16),
+          style: TextStyle(color: textColor, fontSize: 16),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         Text(
           widget.movie.screeningTime,
-          style: TextStyle(color: cinemaFontWhite, fontSize: 16),
+          style: TextStyle(color: textColor, fontSize: 16),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         Text(
           widget.movie.synopsis,
-          style: TextStyle(color: cinemaFontMuted, fontSize: 15),
+          style: TextStyle(color: mutedColor, fontSize: 15),
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
         Text(
           'Please note that Discounts / Membership Benefits will be applied '
           'once you have selected your tickets',
-          style: TextStyle(color: cinemaFontWhite, fontSize: 16),
+          style: TextStyle(color: textColor, fontSize: 16),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Text(
           'Select Quantities (Up to 5 in total)',
-          style: TextStyle(color: cinemaFontWhite, fontSize: 16),
+          style: TextStyle(color: textColor, fontSize: 16),
         ),
       ],
     );
   }
 
   Widget _buildTicketSection() {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme colorScheme = theme.colorScheme;
+    final Color feedbackColor = theme.brightness == Brightness.dark
+        ? cinemaBrandLight
+        : cinemaBrandDark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Tickets',
-          style: cinemaHeaderStyle,
+          style: TextStyle(
+            color: colorScheme.onSurface,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(height: 12),
         Row(
@@ -91,12 +107,13 @@ class _MovieListingState extends State<MovieListing> {
             DropdownMenu<int>(
               width: 120,
               initialSelection: _ticketQuantity,
-              textStyle: const TextStyle(color: Colors.black, fontSize: 16),
-              inputDecorationTheme: const InputDecorationTheme(
+              textStyle: TextStyle(color: colorScheme.onSurface, fontSize: 16),
+              inputDecorationTheme: InputDecorationTheme(
                 filled: true,
-                fillColor: cinemaFontWhite,
+                fillColor: colorScheme.surface,
+                border: const OutlineInputBorder(),
                 contentPadding:
-                    EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               ),
               onSelected: (int? value) {
                 if (value != null) {
@@ -117,7 +134,7 @@ class _MovieListingState extends State<MovieListing> {
             const SizedBox(width: 16),
             Text(
               'Adult (${widget.movie.formattedPrice})',
-              style: TextStyle(color: cinemaFontWhite, fontSize: 16),
+              style: TextStyle(color: colorScheme.onSurface, fontSize: 16),
             ),
           ],
         ),
@@ -129,8 +146,8 @@ class _MovieListingState extends State<MovieListing> {
         const SizedBox(height: 16),
         Text(
           _bookingMessage,
-          style: const TextStyle(
-            color: cinemaBrandLight,
+          style: TextStyle(
+            color: feedbackColor,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
@@ -143,7 +160,7 @@ class _MovieListingState extends State<MovieListing> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
+        title: const Text(appTitle),
       ),
       drawer: const NavDrawer(),
       body: SingleChildScrollView(

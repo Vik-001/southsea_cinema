@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/movie.dart';
-import '../constants.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
+import '../constants.dart';
+import '../models/movie.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -10,9 +10,15 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme colorScheme = theme.colorScheme;
+    final bool isDark = theme.brightness == Brightness.dark;
+    final Color mutedColor = isDark ? cinemaFontMuted : cinemaLightMuted;
+    final Color titleColor = isDark ? cinemaBrand : cinemaBrandDark;
+
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      color: cinemaSurface,
+      color: colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
@@ -31,17 +37,17 @@ class MovieCard extends StatelessWidget {
                 children: [
                   Text(
                     '${movie.title} (${movie.ageRating})',
-                    style: cinemaHeaderStyle.copyWith(color: cinemaBrand),
+                    style: cinemaHeaderStyle.copyWith(color: titleColor),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     movie.synopsis,
-                    style: const TextStyle(color: cinemaFontWhite),
+                    style: TextStyle(color: colorScheme.onSurface),
                   ),
                   const SizedBox(height: 16),
                   Text(
                     movie.screeningTime,
-                    style: const TextStyle(color: cinemaFontMuted),
+                    style: TextStyle(color: mutedColor),
                   ),
                   const SizedBox(height: 8),
                   ElevatedButton(
