@@ -98,33 +98,32 @@ void main() {
   });
 
   testWidgets('deletes the middle of three films using its Key',
-        (WidgetTester tester) async {
-      BasketRepository.instance.addItem(
-        const TicketItem(movie: testMovie, quantity: 1),
-      );
-      BasketRepository.instance.addItem(
-        const TicketItem(movie: testMovie2, quantity: 1),
-      );
-      BasketRepository.instance.addItem(
-        const TicketItem(movie: testMovie3, quantity: 1),
-      );
+      (WidgetTester tester) async {
+    BasketRepository.instance.addItem(
+      const TicketItem(movie: testMovie, quantity: 1),
+    );
+    BasketRepository.instance.addItem(
+      const TicketItem(movie: testMovie2, quantity: 1),
+    );
+    BasketRepository.instance.addItem(
+      const TicketItem(movie: testMovie3, quantity: 1),
+    );
 
-      await pumpBasketView(tester);
+    await pumpBasketView(tester);
 
-      expect(find.text(testMovie.title), findsOneWidget);
-      expect(find.text(testMovie2.title), findsOneWidget);
-      expect(find.text(testMovie3.title), findsOneWidget);
+    expect(find.text(testMovie.title), findsOneWidget);
+    expect(find.text(testMovie2.title), findsOneWidget);
+    expect(find.text(testMovie3.title), findsOneWidget);
 
-      final Finder middleDeleteButton =
-          find.byKey(const Key('delete_film_silo'));
-      await tester.ensureVisible(middleDeleteButton);
-      await tester.tap(middleDeleteButton);
-      await tester.pumpAndSettle();
+    final Finder middleDeleteButton = find.byKey(const Key('delete_film_silo'));
+    await tester.ensureVisible(middleDeleteButton);
+    await tester.tap(middleDeleteButton);
+    await tester.pumpAndSettle();
 
-      expect(find.text(testMovie2.title), findsNothing);
-      expect(find.text(testMovie.title), findsOneWidget);
-      expect(find.text(testMovie3.title), findsOneWidget);
-    });
+    expect(find.text(testMovie2.title), findsNothing);
+    expect(find.text(testMovie.title), findsOneWidget);
+    expect(find.text(testMovie3.title), findsOneWidget);
+  });
 
   group('BasketView SQLite Persistence Tests', () {
     testWidgets(
