@@ -34,7 +34,7 @@ local SQLite persistence and persistent Light/Dark theme preferences.
 ### 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/](https://github.com/)<Vik-001>/southsea_cinema.git
+git clone https://github.com/Vik-001/southsea_cinema.git
 cd southsea_cinema
 ```
 
